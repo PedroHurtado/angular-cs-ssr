@@ -1,6 +1,5 @@
 import { Component, afterNextRender, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { json } from 'stream/consumers';
 
 @Component({
   selector: 'app-root',
