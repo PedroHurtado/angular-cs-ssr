@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, afterNextRender, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { json } from 'stream/consumers';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class AppComponent {
   count = signal(10);
   constructor(){
-    console.log("constructor")
+    afterNextRender(()=>{
+      const foo = {id:1}
+      localStorage.setItem("foo",JSON.stringify(foo))
+    })
   }
   handlerClick(){
     this.count.update(value=>value+1);
